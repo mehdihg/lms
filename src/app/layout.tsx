@@ -25,7 +25,7 @@ export default function RootLayout({
 }) {
   return (
     <html className={`dark ${figtree.variable} ${myFont.variable} ` }>
-      <body dir='rtl' className='flex flex-1 min-h-screen grid grid-rows-[80px_1fr_auto] dark:bg-base-100 dark:text-base-content'>
+      <body dir='rtl' className=' flex flex-1 min-h-screen grid grid-rows-[80px_1fr_auto] dark:bg-base-100 dark:text-base-content'>
         <Header/>
         <div>
           {children}

@@ -46,6 +46,7 @@ export const tailwindColor:{[key:string]:string} ={
 const config: Config = {
   content: [
     './src/app/**/*.{tsx,jsx}',
+    
   ],
   theme: {
     colors:tailwindColor,
