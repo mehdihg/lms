@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`home hero section snapshot hero section:  <section className='bg-hero-pattern bg-no-repeat bg-center xl:bg-left mt-5 xl:mt-20'>
+        <div className='container flex flex-col-reverse items-center lg:flex-row'>
+  
+        
+        <div className='flex flex-col text-center gap-5 mt-12 pb-5 xl:text-right'>
+          <h3 className='text-xl dark:text-info xl:text-2xl'>خوش آمدید به ...</h3>
+          <h1 className='text-3xl lg:text-3xl xl:text-5xl gradient pb-2'>مسیر صعود به قله های برنامه نویسی</h1>
+          <p className='text-lg font-bold leading-8'>
+          هر جای مسیرِ برنامه‌نویسی که باشی، با هم‌راهی استادهای باتجربهٔ
+                کلاسبن می‌تونی بدون محدودیت به قله‌های بالاتر صعود کنی. ما همیشه
+                هواتو داریم.
+          </p>
+          <div className='flex gap-4 mt-4 mb-3'>
+          <Button variant='primary' size='large'>دوره های ری اکت و نکست</Button>
+          <Button variant='neutral' size='large'>مشاوره های برنامه نویسی</Button>
+          </div>
+          <Image src='/images/frameworks.png' className='grayscale mt-4 opacity-70 m-auto xl:m-0' width={412} height={39} alt='frameworks'/>
+        </div>
+        <Image src='/images/programmer-landing.svg'  width={702} height={521} alt='programmer'/>
+        </div>
+        
+      </section> 1`] = `
+<div>
+  <section
+    class="bg-hero-pattern bg-no-repeat bg-center xl:bg-left mt-5 xl:mt-20"
+  >
+    <div
+      class="container flex flex-col-reverse items-center lg:flex-row"
+    >
+      <div
+        class="flex flex-col text-center gap-5 mt-12 pb-5 xl:text-right"
+      >
+        <h3
+          class="text-xl dark:text-info xl:text-2xl"
+        >
+          خوش آمدید به ...
+        </h3>
+        <h1
+          class="text-3xl lg:text-3xl xl:text-5xl gradient pb-2"
+        >
+          مسیر صعود به قله های برنامه نویسی
+        </h1>
+        <p
+          class="text-lg font-bold leading-8"
+        >
+          هر جای مسیرِ برنامه‌نویسی که باشی، با هم‌راهی استادهای باتجربهٔ کلاسبن می‌تونی بدون محدودیت به قله‌های بالاتر صعود کنی. ما همیشه هواتو داریم.
+        </p>
+        <div
+          class="flex gap-4 mt-4 mb-3"
+        >
+          <button
+            class="btn btn-primary btn-lg"
+            type="button"
+          >
+            دوره های ری اکت و نکست
+          </button>
+          <button
+            class="btn btn-neutral btn-lg"
+            type="button"
+          >
+            مشاوره های برنامه نویسی
+          </button>
+        </div>
+        <img
+          alt="frameworks"
+          class="grayscale mt-4 opacity-70 m-auto xl:m-0"
+          data-nimg="1"
+          decoding="async"
+          height="39"
+          loading="lazy"
+          src="/_next/image?url=%2Fimages%2Fframeworks.png&w=828&q=75"
+          srcset="/_next/image?url=%2Fimages%2Fframeworks.png&w=640&q=75 1x, /_next/image?url=%2Fimages%2Fframeworks.png&w=828&q=75 2x"
+          style="color: transparent;"
+          width="412"
+        />
+      </div>
+      <img
+        alt="programmer"
+        data-nimg="1"
+        decoding="async"
+        height="521"
+        loading="lazy"
+        src="/images/programmer-landing.svg"
+        style="color: transparent;"
+        width="702"
+      />
+    </div>
+  </section>
+</div>
+`;
