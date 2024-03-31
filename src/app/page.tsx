@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { Button } from './_components/button'
 import { HomeHeroSection } from './_components/home-hero-section/home-hero-section'
 import { NewCouresesSummary } from '@/types/new-courses-summary-interface'
+import { CourseCardList } from './(courses)/_components/course-card-list';
 
 async function getNewCourses(count:number):Promise<NewCouresesSummary[]>{
  const res= await fetch(`https://api.classbon.com/api/courses/newest/${count}`,{next:{
@@ -17,7 +18,17 @@ export default async function Home() {
   return (
     <>
     <HomeHeroSection/>
-   
+    <section className='container pt-20'>
+      <div className='text-center xl:text-right'>
+        <h2 className='text-2xl font-extrabold'>
+          تازه ترین دوره های اموزشی
+        </h2>
+        <p>
+          برای بروز موندن،یادگرفتن نکته های تازه ضروریه!
+        </p>
+      </div>
+      <CourseCardList courses={newestCourses}/>
+    </section>
     </>
   )
 }
