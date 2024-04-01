@@ -1,3 +1,4 @@
+import { Badge } from "@/app/_components/badge"
 import { NewCouresesSummary } from "@/types/new-courses-summary-interface"
 import Image from "next/image"
 import Link from "next/link"
@@ -25,18 +26,26 @@ export const CourseCard:React.FC<CourseCardType>=({
                 />
             </figure>
             <div className="flex mt-2 gap-2 font-semibold dark:text-info px-3 py-2">
+                <Badge variant="info">
                 {
                     recordStatus
                 }
+                </Badge>
+                <Badge variant="success">
                 {
                     level
                 }
+                </Badge>
+               
             </div>
-            <div className="crad-body">
+            <div className="card-body">
                 <Link href={`/course/${slug}`}>{title}</Link>
-                <p>{subTitle}</p>
+                <p >{subTitle}</p>
                 <div>
-                    {duration}
+                <Badge variant="warning">
+                {duration}
+                </Badge>
+                    
                     {
                         basePrice
                     }
