@@ -7,6 +7,14 @@ const nextConfig = {
             hostname: 'api.classbon.com',
            
           },
+            {
+                protocol: "https",
+                hostname: "classbon-blog.s3.ir-thr-at1.arvanstorage.ir",
+            },
+            {
+                protocol: "https",
+                hostname: "classbon-blog.s3.ir-thr-at1.arvanstorage.com",
+            },
         ],
       },
 }
