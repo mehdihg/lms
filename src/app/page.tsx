@@ -8,15 +8,16 @@ import { Feature } from './_components/feature/feature';
 import { IconArrowLeftFill } from './_components/icons/icons';
 import { NewBlogSummary } from '@/types/new-blog-summary-interface';
 import { BlogPostCardList } from './(blog)/_components/blog-post-card-list';
+import { API_URL } from '@/configs/global';
 
 async function getNewCourses(count:number):Promise<NewCouresesSummary[]>{
- const res= await fetch(`https://api.classbon.com/api/courses/newest/${count}`,{next:{
+ const res= await fetch(`${API_URL}/courses/newest/${count}`,{next:{
   revalidate:24*60*60
  }});
  return res.json()
 }
 async function getNewBlogs(count:number):Promise<NewBlogSummary[]>{
-  const res= await fetch(`https://api.classbon.com/api/blog/newest/${count}`,{next:{
+  const res= await fetch(`${API_URL}/blog/newest/${count}`,{next:{
    revalidate:24*60*60
   }});
   return res.json()
