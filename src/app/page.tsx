@@ -11,7 +11,9 @@ import { BlogPostCardList } from './(blog)/_components/blog-post-card-list';
 import { API_URL } from '@/configs/global';
 
 async function getNewCourses(count:number):Promise<NewCouresesSummary[]>{
- const res= await fetch(`${API_URL}/courses/newest/${count}`,{next:{
+    
+ const res= await fetch(`${API_URL}/courses/newest/${count}`,{
+    next:{
   revalidate:24*60*60
  }});
  return res.json()
