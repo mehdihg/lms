@@ -30,6 +30,7 @@ export default async function Home() {
   const newestCoursesData = getNewCourses(4)
   const newestBlogData = getNewBlogs(4)
     const [newestCoursesPosts,newestBlogsPosts] = await Promise.all([newestCoursesData,newestBlogData])
+    
   return (
     <>
     <HomeHeroSection/>
