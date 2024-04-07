@@ -41,7 +41,7 @@ export const CourseCard:React.FC<CourseCardType>=({
                
             </div>
             <div className="card-body">
-                <Link href={`/course/${slug}`}>{title}</Link>
+                <Link href={`/courses/${slug}`}>{title}</Link>
                 <p >{subTitle}</p>
                 <div className="flex items-center justify-between mt-3">
                 <Badge variant="warning">
@@ -54,7 +54,7 @@ export const CourseCard:React.FC<CourseCardType>=({
                    
                 </div>
             </div>
-            <Link href={`/course/${slug}`} className="card-footer justify-center animated-icon" >
+            <Link href={`/courses/${slug}`} className="card-footer justify-center animated-icon" >
             مشاهده جزئیات دوره
             <IconArrowLeftFill fill="currentColor"/>
             </Link>
