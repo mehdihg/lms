@@ -1,3 +1,5 @@
+import { Progress } from "@/app/_components/progress"
+import { Rating } from "@/app/_components/rating"
 import { API_URL } from "@/configs/global"
 import { CourseDetails } from "@/types/course-interface-details.interface"
 
@@ -31,7 +33,10 @@ export default async function({params}:{params:{slug:string}}){
 
                 <div className=" mt-5">Video Player Component</div>
             </div>
-            <div className="col-span-10 xl:col-span-3 bg-secondary"></div>
+            <div className="col-span-10 xl:col-span-3 bg-secondary">
+                <Rating rate={course.averageReviewRating}/>
+                <Progress value={50} size='small' />
+            </div>
             <div className="col-span-10 xl:col-span-6 bg-info"></div>
             <div className="col-span-10 xl:col-span-4 bg-warning"></div>
         </div>
