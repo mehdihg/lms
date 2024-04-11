@@ -1,4 +1,4 @@
-import { NewCouresesSummary } from "@/types/new-courses-summary-interface";
+import { NewCouresesSummary } from "@/types/new-courses-summary.interface";
 import { CourseCard } from "./course-card";
 
  type CourseCardList ={

@@ -1,4 +1,4 @@
-import { Testimonial } from "@/types/testimonial.type"
+import { Testimonial } from "@/types/testimonial.types"
 
 export type TestimonialProps={
     testimonial:Testimonial

@@ -1,12 +1,12 @@
 import Image from 'next/image'
 import { Button } from './_components/button'
 import { HomeHeroSection } from './_components/home-hero-section/home-hero-section'
-import { NewCouresesSummary } from '@/types/new-courses-summary-interface'
+import { NewCouresesSummary } from '@/types/new-courses-summary.interface'
 import { CourseCardList } from './(courses)/_components/course-card-list';
 import { homeFeatures } from '@/data/home-features';
 import { Feature } from './_components/feature/feature';
 import { IconArrowLeftFill } from './_components/icons/icons';
-import { NewBlogSummary } from '@/types/new-blog-summary-interface';
+import { NewBlogSummary } from '@/types/new-blog-summary.interface';
 import { BlogPostCardList } from './(blog)/_components/blog-post-card-list';
 import { API_URL } from '@/configs/global';
 import { TestimonialList } from './_components/testmonial/testimonial-list';

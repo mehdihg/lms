@@ -14,29 +14,33 @@ export const Accordion: React.FC<AccordionProps> = ({
 
   return (
     <div className="accordion">
-      {data.map((item, index) => (
-        <div key={`accordion-${item.id}`}>
-          <h2 className="accordion-title">
-            <button
-              onClick={() => toggleAccordion(index)}
-              type="button"
-              className={`${
-                index === activeIndex ? "text-white" : "text-base-content"
-              }`}
-            >
-              <span>{item.title}</span>
-              {activeIndex === index ? (
-                <IconChevronUp width={18} />
-              ) : (
-                <IconChevronDown width={18} />
-              )}
-            </button>
-          </h2>
-          {activeIndex === index && (
-            <div className={`accordion-content`}>{item.content}</div>
-          )}
-        </div>
-      ))}
+      {
+        data.length>0 ?  data.map((item, index) => (
+          <div key={`accordion-${item.id}`}>
+            <h2 className="accordion-title">
+              <button
+                onClick={() => toggleAccordion(index)}
+                type="button"
+                className={`${
+                  index === activeIndex ? "text-white" : "text-base-content"
+                }`}
+              >
+                <span>{item.title}</span>
+                {activeIndex === index ? (
+                  <IconChevronUp width={18} />
+                ) : (
+                  <IconChevronDown width={18} />
+                )}
+              </button>
+            </h2>
+            {activeIndex === index && (
+              <div className={`accordion-content`}>{item.content}</div>
+            )}
+          </div>
+        ))
+        : <p>سوالی وجود ندارد!</p>
+      }
+     
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import { Badge } from "@/app/_components/badge"
 import { IconArrowLeftFill, IconClock } from "@/app/_components/icons/icons"
 import { Price } from "@/app/_components/price/price"
-import { NewCouresesSummary } from "@/types/new-courses-summary-interface"
+import { NewCouresesSummary } from "@/types/new-courses-summary.interface"
 import Image from "next/image"
 import Link from "next/link"
 type CourseCardType=NewCouresesSummary

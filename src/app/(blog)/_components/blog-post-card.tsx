@@ -1,6 +1,6 @@
 import { Badge } from "@/app/_components/badge";
 import { IconCalendar, IconClock, IconComment, IconEye, IconUserProfile } from "@/app/_components/icons/icons";
-import { NewBlogSummary } from "@/types/new-blog-summary-interface";
+import { NewBlogSummary } from "@/types/new-blog-summary.interface";
 import Image from "next/image";
 import Link from "next/link";
 

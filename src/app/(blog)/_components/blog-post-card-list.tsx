@@ -1,4 +1,4 @@
-import { NewBlogSummary } from "@/types/new-blog-summary-interface"
+import { NewBlogSummary } from "@/types/new-blog-summary.interface"
 import { BlogPostCard } from "./blog-post-card"
 
 type BlogPostCardListProps={
