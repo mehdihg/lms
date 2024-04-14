@@ -7,6 +7,7 @@ import { Tabs } from "@/app/_components/tab/tab"
 import { Tab } from "@/types/tab.types"
 import { AccordionTypes } from "@/types/accordion.types"
 import { Accordion } from "@/app/_components/accordion"
+import { CourseComments } from "./_components/comments/course-comments"
 
 export async function generateStaticParams(){
     const posts= await fetch(`${API_URL}/courses/slugs`).then(res=>res.json())
@@ -44,6 +45,10 @@ export default async function({params}:{params:{slug:string}}){
             label:'سوالات',
             content:<Accordion data={faqs}/>
     
+        },
+        {
+            label:'نظرات',            
+            content:<CourseComments/>
         }
 
     ]

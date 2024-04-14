@@ -1,5 +1,5 @@
 import { Price } from "@/app/_components/price";
-import { CourseAsideProps } from "./course-aside.types";
+import { CourseAsideProps } from "../../_types/course-aside.types";
 import classNames from 'classnames';
 import { Rating } from "@/app/_components/rating";
 import { IconArrowLeftFill, IconClock, IconComment, IconDoc, IconDownload, IconLevel, IconRecord, IconStudents } from "@/app/_components/icons/icons";
