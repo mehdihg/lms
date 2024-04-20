@@ -8,6 +8,9 @@ import { Tab } from "@/types/tab.types"
 import { AccordionTypes } from "@/types/accordion.types"
 import { Accordion } from "@/app/_components/accordion"
 import { CourseComments } from "./_components/comments/course-comments"
+import { CurriculumProps } from "./_components/curriculum/curriculum.types"
+import { CourseCurriculum } from "./_components/curriculum"
+import { CourseChapter } from "@/types/course-chapter.interface"
 
 export async function generateStaticParams(){
     const posts= await fetch(`${API_URL}/courses/slugs`).then(res=>res.json())
@@ -22,10 +25,15 @@ async function getNewCourses(slug:string):Promise<CourseDetails>{
 const res = await fetch(`${API_URL}/courses/${slug}`)
 return res.json()
 }
-
+async function getCurriculum(slug:string):Promise<CourseChapter[]>{
+    const res = await fetch(`${API_URL}/courses/${slug}/curriculum`)
+    return res.json()
+}
 export default async function({params}:{params:{slug:string}}){
     const {slug}=params
-    const course= await getNewCourses(slug)
+    const courseData=  getNewCourses(slug)
+    const allCurriculumData =getCurriculum(slug)
+    const [course,allCurriculum]= await Promise.all([courseData,allCurriculumData])
     const faqs: AccordionTypes[] = course.frequentlyAskedQuestions.map(
         faq => ({
             id: faq.id,
@@ -71,7 +79,13 @@ export default async function({params}:{params:{slug:string}}){
             <div className="col-span-10 xl:col-span-6 ">
                 <Tabs tabs={tabs}/>
             </div>
-            <div className="col-span-10 xl:col-span-4 bg-warning"></div>
+            <div className="col-span-10 xl:col-span-4">
+                <div className="sticky top-10">
+                    <h2 className="mb-5 text-xl">سرفصل ها دوره</h2>
+                    <CourseCurriculum data={allCurriculum}/>
+                </div>
+                
+            </div>
         </div>
     )
 }
