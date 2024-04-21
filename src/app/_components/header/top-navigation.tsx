@@ -1,4 +1,4 @@
-import { TopNavigationType } from "@/types/topnavigation"
+import { TopNavigationType } from "@/types/topnavigation.types"
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"

@@ -12,6 +12,7 @@ export const Progress: React.FC<ProgressProps> = ({
   value,
   className,
   variant = "neutral",
+
 }) => {
   const classes = classNames(
     "progress",
@@ -19,5 +20,5 @@ export const Progress: React.FC<ProgressProps> = ({
     { [sizeClass[size]]: size },
     { [`progress-${variant}`]: variant }
   );
-  return <progress value={value} max={100} className={classes} />;
+  return <progress value={value} max={100} className={classes}  />;
 };

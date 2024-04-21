@@ -11,6 +11,8 @@ import { CourseComments } from "./_components/comments/course-comments"
 import { CurriculumProps } from "./_components/curriculum/curriculum.types"
 import { CourseCurriculum } from "./_components/curriculum"
 import { CourseChapter } from "@/types/course-chapter.interface"
+import { VideoPlayer } from "@/app/_components/video-player"
+import Image from "next/image"
 
 export async function generateStaticParams(){
     const posts= await fetch(`${API_URL}/courses/slugs`).then(res=>res.json())
@@ -71,7 +73,24 @@ export default async function({params}:{params:{slug:string}}){
                     {course.subTitle}
                 </h2>
 
-                <div className=" mt-5">Video Player Component</div>
+                <div className=" mt-5">
+                    {
+                        course.videoUrl ?
+                        <VideoPlayer
+                        src={course.videoUrl}
+                        poster={`${API_URL}/picture/${course.coverImageId}`}
+                    />
+                    :
+                    <Image
+                    src={`${API_URL}/picture/${course.coverImageId}`}
+                    alt={course.title}
+                    width='550'
+                    height='327'
+                    className="w-full"
+                    />
+                    }
+                    
+                </div>
             </div>
             <div className="col-span-10 xl:col-span-3">
                 <CourseAside {...course}/>
