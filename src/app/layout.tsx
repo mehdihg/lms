@@ -7,6 +7,7 @@ import localFont from 'next/font/local'
 import { Header } from './_components/header'
 import { Footer } from './_components/footer'
 import { QueryProvider } from '@/providers/react-query-provider'
+import NextTopLoader from 'nextjs-toploader'
 const figtree = Figtree({
   display:'swap',
     subsets:['latin'],
@@ -27,6 +28,7 @@ export default function RootLayout({
   return (
     <html className={`dark ${figtree.variable} ${myFont.variable} ` }>
       <body dir='rtl' className=' flex flex-1 min-h-screen grid grid-rows-[80px_1fr_auto] dark:bg-base-100 dark:text-base-content'>
+        <NextTopLoader color='var(--color-primary)' showSpinner={false}/>
         <QueryProvider>
         <Header/>
         <div>
