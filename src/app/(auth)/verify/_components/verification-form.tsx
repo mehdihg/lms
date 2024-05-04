@@ -1,6 +1,7 @@
+"use client"
 import { Button } from "@/app/_components/button/button";
 import Link from "next/link";
-
+import AuthCode from "@/app/_components/auth-code/auth-code";
 const VerificationForm = () => {
   return (
     <>
@@ -9,7 +10,11 @@ const VerificationForm = () => {
       <form
         className="flex flex-col gap-6 mt-10 flex-1"
       >
-        <p>Auth code</p>
+
+        <AuthCode className="mt-10" onChange={value=>{
+          console.log(value);
+          
+        }}/>
 
 
         Timer
