@@ -1,16 +1,16 @@
 'use client'
-import { useEffect, useRef } from "react";
-import { AuthCodeProps, AuthInputProps } from "./auth-code.types";
+import { forwardRef, useEffect, useImperativeHandle, useRef } from "react";
+import { AuthCodeProps, AuthCodeRef, AuthInputProps } from "./auth-code.types";
 import classNames from "classnames";
 
-const AuthCode:React.FC<AuthCodeProps> = ({
+const AuthCode=forwardRef<AuthCodeRef,AuthCodeProps>( ({
     variant="ghost",
     autoFocus=true,
     className,
     onChange,
     isDisabled,
     length=5
-})=>{
+},ref)=>{
     if(length <1){
         throw new Error('تعداد ارقام باید بزرکتر از صفر باشد.')
     }
@@ -22,6 +22,8 @@ const AuthCode:React.FC<AuthCodeProps> = ({
         max:'9',
         pattern:'[0-9]{1}'
     }
+
+
 
     useEffect(()=>{
         if(autoFocus){
@@ -86,10 +88,30 @@ const AuthCode:React.FC<AuthCodeProps> = ({
             />
         )
     }
+
+    useImperativeHandle(ref,()=>({
+        focus:()=>{
+          if(inputsRefs.current){
+            inputsRefs.current[0].focus()
+          }
+        } ,
+        clear:()=>{
+            if(inputsRefs.current){
+                for(let i=0;i<inputsRefs.current.length;i++){
+                    inputsRefs.current[i].value =''
+
+                }
+                inputsRefs.current[0].focus()
+
+            }
+            sendResult()
+        }
+      }))
+
 return(
     <div className={`flex gap-4 flex-row-reverse`}>
         {inputs}
     </div>
 )
-}
+})
 export default AuthCode
