@@ -1,6 +1,6 @@
 .btn {
     @apply no-underline gap-2 h-12 px-7  border inline-flex  cursor-pointer select-none;
-    @apply items-center justify-center border-transparent text-center transition duration-100 ease-in-out rounded-lg;
+    @apply items-center justify-center border-transparent bg-transparent text-center transition duration-100 ease-in-out rounded-lg;
     &:active:hover,
     &:active:focus {
         transform: scale(0.97);
@@ -8,12 +8,12 @@
 
     /* default btn */
     & {
-        @apply dark:border-base-200 dark:bg-base-200 dark:text-base-content  dark:outline-base-content;
-        @media (hover: hover) {
+        @apply dark:border-transparent dark:bg-transparent dark:text-base-content  dark:outline-transparent;
+        /*@media (hover: hover) {
             &:hover {
                 @apply dark:border-base-300 dark:bg-base-300;
             }
-        }
+        }*/
     }
     /* brand colors */
     &-primary {
