@@ -8,14 +8,20 @@ import { TextInput } from "@/app/_components/form-input";
 import { useRouter } from "next/navigation";
 import { useSignIn } from "../api/signin";
 import { useNotificationStore } from "@/store/notification.store";
-import { useEffect } from "react";
-
+import { useEffect, useTransition } from "react";
+import { signinSchema } from "../types/signin.schema";
+import { zodResolver } from '@hookform/resolvers/zod';
+import { signinAction } from "@/actions/auth";
+import { useFormState } from "react-dom";
 
 const SignInForm = () => {
-    const {register,handleSubmit,formState: { errors },getValues} = useForm<Siginin>()
+    const {register,handleSubmit,formState: { errors },getValues} = useForm<Siginin>({
+      resolver:zodResolver(signinSchema)
+    })
+    const [isPending,startTransition] = useTransition()
     const router = useRouter()
     const showNotifications = useNotificationStore(state=>state.showNotification)
-    const signin = useSignIn({
+   /* const signin = useSignIn({
       onSuccess:()=>{
         router.push(`/verify?mobile=${getValues('mobile')}`)
         showNotifications({
@@ -23,10 +29,31 @@ const SignInForm = () => {
           message:'کد تایید به شماره شما ارسال شد'
         })
       }
-    })
+    })*/
+    const [formState,action] = useFormState(signinAction, null)
+    useEffect(()=>{
+      if(formState && !formState.isSuccess && formState.error){
+        showNotifications({
+          message:formState.error?.detail!,
+          type:'error'
+        })
+      }else{
+      if(formState && formState.isSuccess){
+        router.push(`/verify?mobile=${getValues('mobile')}`)
+        showNotifications({
+          type:'info',
+          message:'کد تایید به شماره شما ارسال شد'
+        })
+      }
+      }
+    },[formState,showNotifications])
     const onSubmit=(data:Siginin)=>{
+      const formData = new FormData()
+      formData.append('mobile',data.mobile)
+      startTransition(async()=>{
+       await action(formData)
+      })
        
-        signin.submit(data)
     }
 
   return (
@@ -40,19 +67,9 @@ const SignInForm = () => {
               register={register}
               name={"mobile"}
               errors={errors}
-              rules={{
-                required:'شماره موبایل الزامی است.',
-                maxLength:{
-                  value:11,
-                  message:'شماره موبایل باید 11 رقم باشد!'
-                },
-                minLength:{
-                  value:11,
-                  message:'شماره موبایل باید 11 رقم باشد!'
-                }
-              }}
+              
             />
-        <Button type="submit" variant="primary" isLoading={signin.isPending}>
+        <Button type="submit" variant="primary" isLoading={isPending}>
           تایید و دریافت کد
         </Button>
       </form>

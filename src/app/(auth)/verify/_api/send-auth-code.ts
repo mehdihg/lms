@@ -1,4 +1,4 @@
-import { createData } from "@/core/http-service/http-serveice";
+/*import { createData } from "@/core/http-service/http-serveice";
 import { useMutation } from "@tanstack/react-query";
 
 export const SendAuthCode = (username: string): Promise<any> => {
@@ -16,4 +16,4 @@ export const useSendAuthCode = ({ onSuccess }: UseSendAuthCodeOptions = {}) => {
   });
 
   return { submit, isPending };
-};
+};*/

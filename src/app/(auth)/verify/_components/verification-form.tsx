@@ -2,15 +2,17 @@
 import { Button } from "@/app/_components/button/button";
 import Link from "next/link";
 import AuthCode from "@/app/_components/auth-code/auth-code";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AuthCodeRef } from "@/app/_components/auth-code/auth-code.types";
 import { Timer } from "@/app/_components/timer/timer";
 import { TimeRef } from "@/app/_components/timer/timer.types";
-import { useSendAuthCode } from "../_api/send-auth-code";
+//import { useSendAuthCode } from "../_api/send-auth-code";
 import {  useNotificationStore } from "@/store/notification.store";
 import { useSearchParams } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { VerifyModel } from "../_types/verify-model.types";
+import { useFormState } from "react-dom";
+import { sendAuthCode } from "@/actions/auth";
 
   const getTwoMinutesFromNow=()=>{
     const time =new Date()
@@ -18,7 +20,7 @@ import { VerifyModel } from "../_types/verify-model.types";
     return time
   }
 
-const VerificationForm = () => {
+const VerificationForm = ({mobile}:{mobile:string}) => {
   const [showResendCode,setShowResendCode] = useState<boolean>(false)
   const refAuthCode = useRef<AuthCodeRef>(null)
   const timerRef=useRef<TimeRef>(null)
@@ -27,20 +29,39 @@ const VerificationForm = () => {
   const username=params.get('mobile')
   const showNotifications=useNotificationStore(state=>state.showNotification)
   const {handleSubmit,register,setValue,formState:{isValid}} = useForm<VerifyModel>()
-  const sendAuthCode = useSendAuthCode({
+  const [sendAuthCodeState,sendAuthCodeAction] = useFormState(sendAuthCode,null)
+  /*const sendAuthCode = useSendAuthCode({
     onSuccess:()=>showNotifications({
       type:'info',
       message:'کد تاییدبه شماره شما ارسال شد!'
     })
-  })
+  })*/
+  useEffect(()=>{
+    if(sendAuthCodeState && !sendAuthCodeState.isSuccess && sendAuthCodeState.error){
+      showNotifications({
+        message:sendAuthCodeState.error?.detail!,
+        type:'error'
+      })
+    }else{
+    if(sendAuthCodeState && sendAuthCodeState.isSuccess){
+    
+      showNotifications({
+        type:'info',
+        message:'کد تایید به شماره شما ارسال شد'
+      })
+    }
+    }
+  },[sendAuthCodeState,showNotifications])
   register('code',{
     validate:(value:string)=>(value?? "").length === 5
   })
   const onResendAuthCode=()=>{
     timerRef.current?.restart(getTwoMinutesFromNow())
     setShowResendCode(false)
-    sendAuthCode.submit(username!)
+    //sendAuthCode.submit(username!)
+    
     refAuthCode.current?.clear()
+    sendAuthCodeAction(mobile)
   }
   const onSubmit=(data:VerifyModel)=>{
     if(username){
@@ -51,6 +72,7 @@ const VerificationForm = () => {
 
     
   }
+  
   return (
     <>
       <h5 className="text-2xl">کد تایید</h5>

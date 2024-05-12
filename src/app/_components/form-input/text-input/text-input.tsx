@@ -7,7 +7,7 @@ const TextInput =<TFormValues extends FieldValues> ({
     register,
     variant,
     errors,
-    rules,
+    
     ...rest
 }:TextInputProps<TFormValues>)=>{
     const error = get(errors,name)
@@ -15,7 +15,7 @@ const TextInput =<TFormValues extends FieldValues> ({
     return(
         <>
         <TextBox
-        {...register(name,rules)}
+        {...register(name)}
         {...(hasError ? {variant:'error'}:{variant:variant})}
         {...rest}
         />
